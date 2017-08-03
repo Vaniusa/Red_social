@@ -42,6 +42,14 @@
       </nav>
   </header>
   <section id="content">
+      <div class="container">
+          <div class="col-lg-11">
+              {% for message in app.session.flashBag().get('status') %}
+                  <div class="alert alert-success">{{ message }}</div>
+              {% endfor %}
+          </div>
+      </div>
+      <div class="clearfix"></div>
       {% block content %} Contenido por defecto {% endblock %}
   </section>
   <footer class="col-lg-12">
