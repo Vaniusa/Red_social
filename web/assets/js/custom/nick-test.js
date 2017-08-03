@@ -8,9 +8,9 @@ $(document).ready(function () {
            type: 'POST',
            success: function (response) {
                if (response === "used") {
-                   $(".nick-input").css("border", "3px solid red");
+                   $(".nick-input").css("border", "2px solid red");
                } else {
-                   $(".nick-input").css("border", "3px solid green");
+                   $(".nick-input").css("border", "2px solid green");
                }
            }
        });

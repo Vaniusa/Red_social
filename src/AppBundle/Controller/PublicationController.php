@@ -8,7 +8,6 @@ class PublicationController extends Controller
 {
     public function indexAction(Request $request)
     {
-        echo "action index publication";
-        die();
+        return $this->render('AppBundle:Publication:home.html.twig');
     }
 }
