@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Form\RegisterType;
+use AppBundle\Form\UserType;
 use BackendBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -105,5 +106,58 @@ class UserController extends Controller
         }
 
         return new Response($result);
+    }
+
+    public function editUserAction(Request $request)
+    {
+        $user = $this->getUser();   /*obtener el usuario logeado*/
+        $user_image = $user->getImage(); /*creamos una variable con la imagen por defecto*/
+        $form = $this->createForm(UserType::class, $user);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted()) {
+            if ($form->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+                $query = $em->createQuery('SELECT u FROM BackendBundle:User u WHERE u.email = :email OR u.nick = :nick')
+                            ->setParameter('email', $form->get("email")->getData())
+                            ->setParameter('nick', $form->get("nick")->getData());
+
+                $user_isset = $query->getResult();
+
+                if (($user->getEmail() == $user_isset[0]->getEmail() && $user->getNick() == $user_isset[0]->getNick()) || count($user_isset) == 0) {
+                    $file = $form["image"]->getData();
+                    if (! empty($file) && $file != null) {
+                        $ext = $file->guessExtension();
+                        if ($ext == 'jpg' || $ext == 'jpeg' || $ext == 'png' || $ext == 'gif') {
+                            $file_name = $user->getId().time().'.'.$ext;
+                            $file->move("uploads/users", $file_name);
+                            $user->setImage($file_name);
+                        }
+                    } else {
+                        $user->setImage($user_image);
+                    }
+
+                    $em->persist($user);
+                    $flush = $em->flush();
+
+                    if ($flush == null) {
+                        $status = "Usuario actualizado correctamente";
+                    } else {
+                        $status = "No se han actualizado los datos correctamente";
+                    }
+                } else {
+                    $status = "Este usuario ya existe !!";
+                }
+            } else {
+                $status = "No se han actualizado los datos correctamente !!";
+            }
+
+            $this->session->getFlashBag()->add("status", $status);
+            return $this->redirect('my-data');
+        }
+
+        return $this->render('AppBundle:User:edit_user.html.twig', [
+            "form" => $form->createView(),
+        ]);
     }
 }

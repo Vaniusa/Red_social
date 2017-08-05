@@ -3,6 +3,23 @@ body{
     background: #eee;
 }
 
+/*circulo avatar*/
+.navbar-collapse .avatar{
+    background: white;
+    border-radius: 500px;
+    width: 30px;
+    height: 30px;
+    overflow: hidden;
+    float: left;
+    margin-right: 12px;
+    margin-top: -5px;
+}
+/*foto avatar*/
+.navbar-collapse .avatar img{
+    height: 100%;
+    width: 100%;
+}
+
 /*registro*/
 .box-form{
     background: white;
