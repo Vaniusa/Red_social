@@ -19,7 +19,8 @@ body{
     height: 100%;
     width: 100%;
 }
-
+/*users.html.twig*/
+.box-default,
 /*registro*/
 .box-form{
     background: white;
@@ -32,4 +33,24 @@ body{
 
 .box-form input{
     margin-bottom: 10px;
+}
+
+/*users.html.twig*/
+.user-item .avatar{
+    background: #eee;
+    border-radius: 500px;
+    width: 75px;
+    height: 75px;
+    overflow: hidden;
+    float: left;
+}
+
+.user-item .avatar img{
+    height: 100%;
+    width: 100%;
+}
+
+.user-item .user-item-content{
+    padding: 10px;
+    margin-left: 85px;
 }
