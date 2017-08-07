@@ -16,5 +16,5 @@
 /web/bundles/
 .idea/
 .*
-!.gitignore
+.gitignore
 !.htaccess
