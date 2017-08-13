@@ -178,7 +178,7 @@ class UserController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         /*recogemos el dato search de la url con GET*/
-        $search = $request->query->get("search", null);
+        $search = trim($request->query->get("search", null));
         if ($search == null) {
             return $this->redirect($this->generateUrl('home_publication'));
         }

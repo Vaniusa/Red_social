@@ -1,4 +1,8 @@
 {% extends "AppBundle:Layouts:layout.html.twig" %}
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('assets/js/custom/home.js') }}"></script>
+{% endblock %}
 {% block content %}
     <div class="container">
         <div id="timeline" class="col-lg-7 box-default pull-left">
@@ -18,10 +22,21 @@
                                <a class="pub-name-link" href="#">{{ publication.user.name }} {{ publication.user.surname }}</a>
                                - {{ publication.user.nick }} -
                                <span class="pub-date">
-                                   {{ publication.createdAt|date('d-m-Y') }}
+                                   {{ publication.createdAt|long_time }}
                                </span>
                            </p>
-                           {{ publication.text }}
+                           <p>{{ publication.text }}</p>
+                           {% if (publication.document is defined) and (publication.document != null) %}
+                               <a href="{{ asset('uploads/publications/documents/'~publication.document) }}"
+                               class="btn-doc glyphicon glyphicon-save" aria-hidden="true" target="_blank"></a>
+                           {% endif %}
+                           {% if (publication.image is defined) and (publication.image != null) %}
+                               <span class="btn-img glyphicon glyphicon-picture" aria-hidden="true"></span>
+                               <div class="clearfix"></div>
+                               <div class="pub-image">
+                                   <img src="{{ asset('uploads/publications/images/'~publication.image) }}" />
+                               </div>
+                           {% endif %}
                        </div>
                        <div class="clearfix"></div>
                        <hr/>
