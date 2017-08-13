@@ -142,3 +142,11 @@ body{
     cursor: pointer;
     color: #4444 !important;
 }
+
+.like .btn-like:hover{
+    color: red;
+}
+
+.like .active{
+    color: red;
+}
