@@ -60,4 +60,16 @@ function buttons()
          }
        });
     });
+
+    $(".btn-unlike").unbind('click').click(function () {
+        $(this).addClass("hidden");
+        $(this).parent().find('.btn-like').removeClass("hidden");
+        $.ajax({
+            url: '/unlike/'+$(this).attr("data-id"),
+            type: 'GET',
+            success: function (response) {
+                console.log(response);
+            }
+        });
+    });
 }

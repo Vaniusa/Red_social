@@ -41,10 +41,18 @@
                                </div>
                            {% endif %}
                            <div class="pull-right like">
-                               <span data-id="{{ publication.id }}" class="btn-like glyphicon glyphicon-heart-empty"
+                               <span data-id="{{ publication.id }}" class="
+                                    {% if app.user|liked(publication) == true %}
+                                        hidden
+                                    {% endif %}
+                                    btn-like glyphicon glyphicon-heart-empty"
                                     aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Me gusta">
                                </span>
-                               <span data-id="{{ publication.id }}" class="hidden btn-unlike active glyphicon glyphicon-heart-empty"
+                               <span data-id="{{ publication.id }}" class="
+                                     {% if app.user|liked(publication) == false %}
+                                        hidden
+                                     {% endif %}
+                                     btn-unlike active glyphicon glyphicon-heart-empty"
                                      aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Ya no me gusta">
                                </span>
                            </div>
@@ -72,6 +80,46 @@
                 <span class="nickname">{{ app.user.nick }}</span>
             </div>
             <div class="clearfix"></div>
+            <div class="following-data">
+                <a href="#">
+                    <span class="label-stat">
+                        Siguiendo
+                    </span>
+                    <span class="number-stat">
+                        0
+                    </span>
+                </a>
+            </div>
+            <div class="following-data">
+                <a href="#">
+                    <span class="label-stat">
+                        Siguidores
+                    </span>
+                    <span class="number-stat">
+                        0
+                    </span>
+                </a>
+            </div>
+            <div class="following-data">
+                <a href="#">
+                    <span class="label-stat">
+                        Publicaciones
+                    </span>
+                    <span class="number-stat">
+                        0
+                    </span>
+                </a>
+            </div>
+            <div class="following-data">
+                <a href="#">
+                    <span class="label-stat">
+                        Me gustas
+                    </span>
+                    <span class="number-stat">
+                        0
+                    </span>
+                </a>
+            </div>
         </div>
         <div id="new-publication" class="col-lg-4 pull-left box-default">
             <h2 class="box-header">Crear publicacion</h2>
