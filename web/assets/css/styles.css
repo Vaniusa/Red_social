@@ -37,6 +37,12 @@ body{
     margin-bottom: 10px;
 }
 
+/*profile.html.twig*/
+.user_link{
+    color: black;
+    font-weight: bold;
+}
+
 /*users.html.twig*/
 .user-item .avatar,
 .publication-item .avatar/*home.html.twig*/{

@@ -1,5 +1,8 @@
 {% extends "AppBundle:Layouts:layout.html.twig" %}
-
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('assets/js/custom/profile.js') }}"></script>
+{% endblock %}
 {% block content %}
     <div class="col-lg-10 box-default profile-box">
 
@@ -24,7 +27,7 @@
         <div class="clearfix"></div>
 
         <div id="user_stats">
-            {% set user_stats = app.user|user_stats %}     {#creamos un array con los datos del filtro user_stats#}
+            {% set user_stats = user|user_stats %}     {#creamos un array con los datos del filtro user_stats#}
             <div class="following-data">
                 <a href="#">
                     <span class="label-stat">
@@ -80,7 +83,9 @@
                     </div>
                     <div class="publication-item-content">
                         <p>
-                            <a class="pub-name-link" href="#">{{ publication.user.name }} {{ publication.user.surname }}</a>
+                            <a class="pub-name-link" href="{{ path('user_profile', {'nickname': publication.user.nick}) }}">
+                                {{ publication.user.name }} {{ publication.user.surname }}
+                            </a>
                             - {{ publication.user.nick }} -
                             <span class="pub-date">
                                    {{ publication.createdAt|long_time }}

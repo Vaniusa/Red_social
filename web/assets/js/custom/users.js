@@ -13,7 +13,7 @@ $(document).ready(function () {
     }));
 
     ias.extension(new IASSpinnerExtension({
-        src: URL+'/../assets/images/ajax-loader.gif'
+        src: '/../assets/images/ajax-loader.gif'
     }));
 
     ias.extension(new IASNoneLeftExtension({
