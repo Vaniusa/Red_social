@@ -247,3 +247,8 @@ body{
 .profile-box #user_stats .number-stat{
     font-weight: bold;
 }
+
+#nick_mas_grande{
+    font-weight: bold;
+    border-bottom: solid 2px #000000;
+}
