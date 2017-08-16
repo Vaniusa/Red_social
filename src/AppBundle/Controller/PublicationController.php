@@ -106,6 +106,12 @@ class PublicationController extends Controller
     public function removePublicationAction(Request $request, $id = null)
     {
         $em = $this->getDoctrine()->getManager();
+        $likes_repo = $em->getRepository('BackendBundle:Like');
+        $likes = $likes_repo->findBy(array('publication' => $id));
+        foreach ($likes as $like) {
+            $em->remove($like);
+        }
+        $em->flush();
         $publication_repo = $em->getRepository('BackendBundle:Publication');
         $publication = $publication_repo->find($id);
         $user = $this->getUser();

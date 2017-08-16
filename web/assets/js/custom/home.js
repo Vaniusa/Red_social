@@ -41,7 +41,7 @@ function buttons()
        $(this).parent().parent().addClass('hidden');
        
        $.ajax({
-          url: '/publication/remove/'+$(this).attr("data-id"), 
+          url: '/publication/remove/'+$(this).attr("data-id"),
           type: 'GET',
            success: function (response) {
                console.log(response);
