@@ -252,3 +252,10 @@ body{
     font-weight: bold;
     border-bottom: solid 2px #000000;
 }
+
+/*private mensaje index.html.twig*/
+.box-private-message input,
+.box-private-message textarea,
+.box-private-message select{
+    margin-bottom: 10px;
+}

@@ -3,16 +3,12 @@
     <div class="container">
         <div class="col-lg-12 box-default">
             <h1 class="box-header">Mensajeria privada</h1>
-            <div class="col-lg-6 box-private-message">
-                <h4>Enviar nuevo mensaje privado</h4>
-                {{ form_start(form, {'action':'', 'method':'POST'}) }}
-                {{ form_end(form) }}
-
-                <br/>
-                <a href="{{ path('private_message_sended') }}" class="btn btn-warning">Ver mensaje enviado</a>
-            </div>
             <div class="col-lg-6">
-                <h4>Mensaje recibidos</h4>
+                <a href="{{ path('private_message_index') }}" class="btn btn-warning">Ver mensaje recibido</a>
+            </div>
+
+            <div class="col-lg-6">
+                <h4>Mensaje enviado</h4>
                 <hr/>
 
                 <div class="box-content box-messages">
@@ -56,6 +52,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="clearfix"></div>
         </div>
     </div>
