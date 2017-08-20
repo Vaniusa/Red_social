@@ -253,6 +253,10 @@ body{
     border-bottom: solid 2px #000000;
 }
 
+.profile-box .buttons-following{
+    margin-top: 20px;
+}
+
 /*private mensaje index.html.twig*/
 .box-private-message input,
 .box-private-message textarea,

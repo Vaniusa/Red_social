@@ -22,6 +22,7 @@ $(document).ready(function () {
 
     ias.on('ready', function (event) {
        buttons();
+       followButtons();
     });
 
     ias.on('rendered', function (event) {
@@ -67,6 +68,34 @@ function buttons()
         $.ajax({
             url: '/unlike/'+$(this).attr("data-id"),
             type: 'GET',
+            success: function (response) {
+                console.log(response);
+            }
+        });
+    });
+}
+
+function followButtons() {
+    $(".btn-follow").unbind("click").click(function () {
+        $(this).addClass("hidden");
+        $(this).parent().find(".btn-unfollow").removeClass("hidden");
+        $.ajax({
+            url: '/follow',
+            type: 'POST',
+            data: { followed: $(this).attr("data-followed")},
+            success: function (response) {
+                console.log(response);
+            }
+        });
+    });
+
+    $(".btn-unfollow").unbind("click").click(function () {
+        $(this).addClass("hidden");
+        $(this).parent().find(".btn-follow").removeClass("hidden");
+        $.ajax({
+            url: '/unfollow',
+            type: 'POST',
+            data: { followed: $(this).attr("data-followed")},
             success: function (response) {
                 console.log(response);
             }
